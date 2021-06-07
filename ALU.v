@@ -8,14 +8,11 @@ module ALU(in1, in2, ALUctrl, out, zero);
 	output zero;
 
 	always @(*) begin
-    
 		case (ALUctrl)
 			6'b100000: out <= in1 + in2;
 			6'b100010: out <= in1 - in2;
 			6'b100100: out <= in1 & in2;
 			6'b100101: out <= in1 | in2;
-    endcase
-    
+		endcase
 	end
-  
 endmodule
