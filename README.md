@@ -2,19 +2,25 @@
 Single-Cycle 32-Bit MIPS processor implemented in verilog for school shits.
 
 
-_______________________________________________________________________________________
+________________________________________________________________________________________
 
---->      OpCode     ||   func. (for R-types)      ||       ALUop
-          _______         ___________________               _____
+{format}, {"OpCode"}, {func.}, {ALUop}
 
+//////////
 
-i-types:    lw			        x	             010 (same as "add")
-	    sw			        x		     010 (same as "add")
-	    beq		              	x		     110 (same as "sub")
+i-type, "lw",  x, 010 (same as "add")
 
-R-types:    and		              100100		     000
-	    or		              100101		     001
-	    add		              100000		     010
-	    sub		              100010		     110
+i-type, "sw",  x, 010 (same as "add")
 
+i-type, "beq", x, 110 (same as "sub")
+
+//////////
+
+R-type, "and", 100100, 000
+
+R-type, "or",  100101, 001
+
+R-type, "add", 100000, 010
+
+R-type, "sub", 100010, 110
 ________________________________________________________________________________________
