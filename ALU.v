@@ -7,6 +7,8 @@ module ALU(in1, in2, ALUctrl, out, zero);
 	output reg signed [31:0] out;
 	output zero;
 
+	assign zero = (out == 0);
+
 	always @(*) begin
 		case (ALUctrl)
 			6'b100000: out <= in1 + in2;
@@ -15,5 +17,5 @@ module ALU(in1, in2, ALUctrl, out, zero);
 			6'b100101: out <= in1 | in2;
 		endcase
 	end
-	
+
 endmodule
