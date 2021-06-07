@@ -11,10 +11,10 @@ module ALU(in1, in2, ALUctrl, out, zero);
 
 	always @(*) begin
 		case (ALUctrl)
-			3'b010: out <= in1 + in2;
-			3'b110: out <= in1 - in2;
-			3'b000: out <= in1 & in2;
-			3'b001: out <= in1 | in2;
+			3'b010: out <= in1 + in2; //addition
+			3'b110: out <= in1 - in2; //subtraction
+			3'b000: out <= in1 & in2; //AND
+			3'b001: out <= in1 | in2; //OR
 		endcase
 	end
 
