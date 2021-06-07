@@ -15,4 +15,5 @@ module ALU(in1, in2, ALUctrl, out, zero);
 			6'b100101: out <= in1 | in2;
 		endcase
 	end
+	
 endmodule
