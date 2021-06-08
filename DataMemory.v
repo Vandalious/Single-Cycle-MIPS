@@ -13,7 +13,7 @@ module DataMemory(reset, clk, Address, WriteData, MemRead, MemWrite, ReadData);
 	integer i;
 	always @(*) begin
 		if (reset) begin
-			for (i = 0; i < 256; i = i + 1) begin
+			for (i = 0; i < 1024; i = i + 1) begin
 				Data[i] <= 8'd0;
 			end
 		end
