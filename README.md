@@ -8,11 +8,11 @@ ________________________________________________________________________________
 
 //////////
 
-i-type, "lw - 100011",  x, 010 (same as "add")
+i-type, "lw - 100011",  no func, 010 (same as "add")
 
-i-type, "sw - 101011",  x, 010 (same as "add")
+i-type, "sw - 101011",  no func, 010 (same as "add")
 
-i-type, "beq - 000100", x, 110 (same as "sub")
+i-type, "beq - 000100", no func, 110 (same as "sub")
 
 //////////
 
