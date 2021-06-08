@@ -23,7 +23,7 @@ module RegisterFile(reset, clk, ReadReg1, ReadReg2, WriteReg, WriteData, RegWrit
 		Register[3] <= 32'd123987; //$3 = 123987
 		Register[4] <= -32'd53; //$4 = -53
 		Register[5] <= 32'd103; //$5 = 103
-		Register[6] <= 32'd2; //$6 = 2
+		Register[6] <= 32'd18; //$6 = 18
 
 		for (i = 7; i < 32; i = i + 1) begin
 			Register[i] <= 32'd0; //rest of the Registers are set to 0
