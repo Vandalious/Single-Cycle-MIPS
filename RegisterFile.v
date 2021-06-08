@@ -22,7 +22,7 @@ module RegisterFile(reset, clk, ReadReg1, ReadReg2, WriteReg, WriteData, RegWrit
 			end
 		end
 
-		else if (RegWrite && (WriteReg != 5'b00000)) begin
+		else if (RegWrite && (WriteReg != 5'd0)) begin
 			Register[WriteReg] <= WriteData;
 		end
 	end
