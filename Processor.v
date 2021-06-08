@@ -16,11 +16,14 @@ module Processor (reset, clk);
 			PC <= next;
 		end
 	end
+	
+	//----------------------------------------------------------------------------------------------//
 
 	wire[31:0] Instruction;	
 	
 	InstructionMemory IM(.Address(PC), .Instruction(Instruction));
-
+	
+	//----------------------------------------------------------------------------------------------//
 
 	wire RegDst;
 	wire Branch;
@@ -35,6 +38,7 @@ module Processor (reset, clk);
 			   .Branch(Branch), .MemRead(MemRead), .MemtoReg(MemtoReg), .ALUop(ALUop),
 			   .MemWrite(MemWrite), .ALUsrc(ALUsrc), .RegWrite(RegWrite));
 	
+	//----------------------------------------------------------------------------------------------//
 
 	wire [31:0] WriteData; //will be assigned later on in this code
 	wire [31:0] ReadData1; //aka ALU input 1
@@ -45,12 +49,14 @@ module Processor (reset, clk);
 	RegisterFile RF(.reset(reset), .clk(clk), .ReadReg1(Instruction[25:21]), .ReadReg2(Instruction[20:16]),
 			.WriteReg(WriteRegSrc), .WriteData(WriteData), .RegWrite(RegWrite),
 			.ReadData1(ReadData1), .ReadData2(ReadData2));
-
+	
+	//----------------------------------------------------------------------------------------------//
 
 	wire [2:0] ALUctrl;
 
 	ALUController ALUC(.ALUop(ALUop), .func(Instruction[5:0]), .ALUctrl(ALUctrl));
-
+	
+	//----------------------------------------------------------------------------------------------//
 
 	wire [31:0] SignExtended;
 	assign SignExtended = (Instruction[15] == 1'b0)?{16'd0, Instruction[15:0]}:{16'b1111111111111111, Instruction[15:0]}; //sign extension
@@ -60,13 +66,15 @@ module Processor (reset, clk);
 	assign ALUinput2 = ALUsrc?SignExtended:ReadData2;
 
 	ALU alu(.in1(ReadData1), .in2(ALUinput2), .ALUctrl(ALUctrl), .out(ALUres), .zero(zero));
-
+	
+	//----------------------------------------------------------------------------------------------//
 
 	wire [31:0] ramReadData;
 	
 	DataMemory RAM(.reset(reset), .clk(clk), .Address(ALUres), .WriteData(ReadData2), .MemRead(MemRead),
 		       .MemWrite(MemWrite), .ReadData(ramReadData));
-
+	
+	//----------------------------------------------------------------------------------------------//
 
 	assign WriteData = MemtoReg?ramReadData:ALUres;
 
