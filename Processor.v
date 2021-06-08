@@ -34,6 +34,7 @@ module Processor (reset, clk);
 	UnitsController UC(.OpCode(Instruction[31:26]), .func(Instruction[5:0]), .RegDst(RegDst),
 			   .Branch(Branch), .MemRead(MemRead), .MemtoReg(MemtoReg), .ALUop(ALUop),
 			   .MemWrite(MemWrite), .ALUsrc(ALUsrc), .RegWrite(RegWrite));
+	
 
 	wire [31:0] WriteData; //will be assigned later on in this code
 	wire [31:0] ReadData1; //aka ALU input 1
