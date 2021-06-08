@@ -11,7 +11,7 @@ module DataMemory(reset, clk, Address, WriteData, MemRead, MemWrite, ReadData);
 	assign ReadData = MemRead?{Data[Address + 3], Data[Address + 2], Data[Address + 1], Data[Address]}:32'd0; //if MemRead, fill 4 slots from the address into the ReadData (o/p)
 
 	integer i;
-	always @(*) begin
+	always @(posedge reset or posedge clk) begin
 		if (reset) begin
 			for (i = 0; i < 1024; i = i + 1) begin
 				Data[i] <= 8'd0;
