@@ -23,7 +23,7 @@ module UnitsController(OpCode, func, RegDst, Branch, MemRead,
 	assign RegWrite = (OpCode == 6'd0 || OpCode == 6'b100011)?1'b1:1'b0;
 	
 	assign ALUop = ((OpCode == 6'b100011 || OpCode == 6'b101011) || (OpCode == 6'd0 && func == 6'b100000))?3'b010: //add (with lw & sw)
-		       (OpCode == 000100 || (OpCode == 6'd0 && func == 6'b100010))?3'b110: //sub (with beq)
+		       (OpCode == 6'b000100 || (OpCode == 6'd0 && func == 6'b100010))?3'b110: //sub (with beq)
 		       (OpCode == 6'd0 && func == 6'b100100)?3'b000:3'b001; //AND & OR
 
 endmodule
